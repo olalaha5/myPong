@@ -31,7 +31,6 @@
         // изменение ширины и высоты 
         document.addEventListener('touchstart', tch);
         function tch(event) {
-            event.preventDefault();
             console.log(event);
             mDown[0] = event.changedTouches[0].clientX;
             mDown[1] = event.changedTouches[0].clientY;
@@ -43,7 +42,6 @@
             };
             document.addEventListener('touchend', tch1);
             function tch1() {
-                event.preventDefault();
                 w = 1;
                 h = 1;
             };
@@ -53,7 +51,6 @@
         };
         document.addEventListener('touchmove', tch2);
         function tch2(event) {
-            event.preventDefault();
             mMove[0] = event.changedTouches[0].clientX - 10;
             mMove[1] = event.changedTouches[0].clientY - 10;
             if (w == 0) {
@@ -154,7 +151,8 @@
             }
 
         };
-        paint()</script>
+        paint()
+    </script>
 </body>
 
 </html>
