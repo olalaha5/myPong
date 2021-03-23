@@ -29,6 +29,40 @@
         let w = 1;
         let h = 1;
         // изменение ширины и высоты 
+        document.addEventListener('touchstart', tch);
+        function tch(event) {
+            console.log(event);
+            mDown[0] = event.changedTouches[0].clientX;
+            mDown[1] = event.changedTouches[0].clientY;
+            if (mDown[0] <= 20 + pong.width && mDown[0] > pong.width && mDown[1] - 20 <= pong.height && mDown[1] > 5) {
+                w = 0;
+            };
+            if (mDown[1] <= 20 + pong.height && mDown[1] > pong.height && mDown[0] - 20 <= pong.width && mDown[0] > 5) {
+                h = 0;
+            };
+            document.addEventListener('touchend', tch1);
+            function tch1() {
+                w = 1;
+                h = 1;
+            };
+            while (w == 1) {
+                return;
+            };
+        };
+        document.addEventListener('touchmove', tch2);
+        function tch2(event) {
+            mMove[0] = event.changedTouches[0].clientX - 10;
+            mMove[1] = event.changedTouches[0].clientY - 10;
+            if (w == 0) {
+                console.log(0)
+                pong.width = mMove[0];
+            };
+            if (h == 0) {
+                console.log(0)
+                pong.height = mMove[1];
+            };
+            paint();
+        };
         document.onmousemove = (event) => {
             mMove[0] = event.clientX - 10;
             mMove[1] = event.clientY - 10;
